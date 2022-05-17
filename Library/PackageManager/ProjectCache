@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637883577106101081
-    m_Hash: 2524645620
+      ticks: 637883629456513030
+    m_Hash: 378034925
   m_LockFileStatus:
     m_FilePath: C:/Users/DynamoDoughnut/Desktop/SODA GAME/PROJECT-Soda-Jimmy/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637883577396283595
-    m_Hash: 2967833652
+      ticks: 637883629456518096
+    m_Hash: 3067516682
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
