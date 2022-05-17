@@ -45,6 +45,7 @@ The following packages were updated:
   com.unity.collab-proxy from version 1.13.5 to 1.15.15
   com.unity.timeline from version 1.6.2 to 1.6.4
 
+<<<<<<< HEAD
 === Mon May 16 23:15:10 2022
 
 Packages were changed.
@@ -52,3 +53,12 @@ Update Mode: updateDependencies
 
 The following packages were updated:
   com.unity.collab-proxy from version 1.15.15 to 1.15.16
+=======
+=== Mon May 16 23:09:26 2022
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.shadergraph@12.1.0
+>>>>>>> 5c183b2ff64627aee19b0b637008d309c559770b
