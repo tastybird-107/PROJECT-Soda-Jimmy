@@ -58,6 +58,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\ArmCameraRotation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
+    <None Include="Assets\TerrainSampleAssets\ShaderGraphs\CustomFunctions\CustomLighting.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -743,6 +748,12 @@
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TerrainTools">
+      <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TerrainTools.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
