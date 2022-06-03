@@ -27,13 +27,23 @@ public class PlayerMovement : MonoBehaviour
     // wall movement
 
     public float jumpDistance = 2f;
-    public float minJumpHeight = 30f;
+    public float minJumpHeight = 2f;
 
-    public Transform wallCheck;
-    public float wallDistance = 0.6f;
+    public Transform wallCheckLeft;
+    public Transform wallCheckRight;
+    public float wallDistance = 0.1f;
     public LayerMask wallMask;
 
-    bool onWall;
+    bool onWallLeft;
+    bool onWallRight;
+
+    Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -70,21 +80,38 @@ public class PlayerMovement : MonoBehaviour
 
     void wallMovement()
     {
-        onWall = Physics.CheckSphere(wallCheck.position, wallDistance, wallMask);
+        onWallLeft = Physics.CheckSphere(wallCheckLeft.position, wallDistance, wallMask);
+        onWallRight = Physics.CheckSphere(wallCheckRight.position, wallDistance, wallMask);
 
-        if (onWall && AboveGround() && z > 0)
+        if ((onWallLeft || onWallRight) && AboveGround() && z > 0)
         {
-            velocity.y = 0f;
+            //velocity.y = 0f;
+            if (Input.GetButtonDown("Jump"))
+            {
+                WallJump();
+            }
         }
-
-        /*if (Input.GetButtonDown("Jump"))
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }*/
     }
 
     private bool AboveGround()
     {
-        return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, groundMask);
+        return !Physics.CheckSphere(groundCheck.position, minJumpHeight, groundMask);
+    }
+
+    private void WallJump()
+    {
+        Vector3 JumpForce = new Vector3(-500f, 0f, 0f);
+
+        if (onWallLeft)
+        {
+            rb.AddForce(JumpForce, ForceMode.Impulse);
+        }
+        if (onWallRight)
+        {
+            rb.AddForce(JumpForce, ForceMode.Impulse);
+        }
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+        
     }
 }
