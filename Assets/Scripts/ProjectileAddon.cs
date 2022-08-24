@@ -6,6 +6,8 @@ public class ProjectileAddon : MonoBehaviour
 {
     public int damage;
 
+    public int timeToDestroy;
+
     private Rigidbody rb;
 
     private bool targetHit;
@@ -13,6 +15,8 @@ public class ProjectileAddon : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        Invoke(nameof(DestroyProjectile), timeToDestroy);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -36,11 +40,16 @@ public class ProjectileAddon : MonoBehaviour
             }
 
             //make sure projectile sticks to surface
-            rb.isKinematic = true;
+            rb.isKinematic = false;
 
             //make sure projectile moves with target
             transform.SetParent(collision.transform);
         }
+    }
+
+    private void DestroyProjectile()
+    {
+        Destroy(gameObject);
     }
     // Update is called once per frame
     void Update()

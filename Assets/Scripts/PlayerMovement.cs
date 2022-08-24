@@ -37,12 +37,18 @@ public class PlayerMovement : MonoBehaviour
     bool onWallLeft;
     bool onWallRight;
 
+    //cameras
+    public Camera firstPersonCamera;
+    public Camera thirdPersonCamera;
+
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        firstPersonCamera.enabled = true;
+        thirdPersonCamera.enabled = false;
     }
 
     // Update is called once per frame
@@ -50,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     {
         groundMovement();
         wallMovement();
+        CameraStuff();
     }
 
     void groundMovement()
@@ -91,6 +98,20 @@ public class PlayerMovement : MonoBehaviour
                 WallJump();
             }
         }
+    }
+
+    void CameraStuff()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SwitchCamera();
+        }
+    }
+
+    private void SwitchCamera()
+    {
+        firstPersonCamera.enabled = !firstPersonCamera.enabled;
+        thirdPersonCamera.enabled = !thirdPersonCamera.enabled;
     }
 
     private bool AboveGround()
