@@ -41,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
 
+    //Player stats and stuff
+    public int health;
+
     Rigidbody rb;
 
     private void Start()
@@ -134,5 +137,15 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            //Kill player
+        }
     }
 }

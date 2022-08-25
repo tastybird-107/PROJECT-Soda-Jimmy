@@ -351,8 +351,10 @@ MonoBehaviour:
   walkPointRange: 5
   attackPoint: {fileID: 1693385208}
   timeBetweenAttacks: 0.5
-  projectile: {fileID: 8126914426929528439, guid: fc37ca8ab8045844a891551b99a5e3d9, type: 3}
-  sightRange: 20
+  projectile: {fileID: 8126914426929528439, guid: 75df4bcbfd115e749a6e86c774f1c708, type: 3}
+  throwForce: 20
+  throwUpwardForce: 0
+  sightRange: 100
   attackRange: 12
   playerInSightRange: 0
   playerInAttackRange: 0
@@ -1678,6 +1680,7 @@ MonoBehaviour:
     m_Bits: 128
   firstPersonCamera: {fileID: 963194227}
   thirdPersonCamera: {fileID: 1279062161}
+  health: 100
 --- !u!54 &1836150907
 Rigidbody:
   m_ObjectHideFlags: 0

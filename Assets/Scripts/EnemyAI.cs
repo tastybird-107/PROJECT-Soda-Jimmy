@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public float throwForce;
+    public float throwUpwardForce;
 
     //States
     public float sightRange, attackRange;
@@ -83,11 +85,15 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, attackPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///
+            //Attack code here
+            GameObject thrownObject = Instantiate(projectile, attackPoint.position, Quaternion.identity);
+            Rigidbody projectileRb = thrownObject.GetComponent<Rigidbody>();
+            Vector3 forceDirection = (player.position - attackPoint.position).normalized;
+            //Add force
+            Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
+
+            projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
+
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
