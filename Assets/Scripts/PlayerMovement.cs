@@ -43,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
     //Player stats and stuff
     public int health;
+    public int maxHealth = 100;
+
+    public HealthBar healthBar;
 
     Rigidbody rb;
 
@@ -52,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
         firstPersonCamera.enabled = true;
         thirdPersonCamera.enabled = false;
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -142,6 +147,8 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        healthBar.SetHealth(health);
 
         if (health <= 0)
         {

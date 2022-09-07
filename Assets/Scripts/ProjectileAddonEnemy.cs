@@ -6,7 +6,7 @@ public class ProjectileAddonEnemy : MonoBehaviour
 {
     public int damage;
 
-    public int timeToDestroy;
+    public float timeToDestroy;
 
     private Rigidbody rb;
 
