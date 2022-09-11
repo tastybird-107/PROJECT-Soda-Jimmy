@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Start!");
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         firstPersonCamera.enabled = true;
@@ -147,12 +148,14 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
         healthBar.SetHealth(health);
+
+        Debug.Log("Took Damage! Current health: " + health);
 
         if (health <= 0)
         {
             //Kill player
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
