@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         if (health <= 0)
         {
             //Kill player
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGame(false);
         }
     }
 }

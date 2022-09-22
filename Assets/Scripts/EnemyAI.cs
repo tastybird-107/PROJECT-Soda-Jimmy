@@ -116,6 +116,7 @@ public class EnemyAI : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        FindObjectOfType<GameManager>().KillEnemy();
         Destroy(gameObject);
     }
 }
