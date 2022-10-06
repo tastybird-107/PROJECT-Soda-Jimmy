@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     GameObject[] enemies;
-    int enemiesLeft = 0;
+    public EnemyCounter enemyCounter;
+    public int enemiesLeft = 0;
     bool gameHasEnded = false;
 
     public void EndGame (bool hasWon)
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesLeft = enemies.Length;
+        enemyCounter.SetCounter(enemiesLeft);
     }
 
     private void Update()
@@ -52,8 +54,9 @@ public class GameManager : MonoBehaviour
     public void KillEnemy()
     {
         enemiesLeft--;
+        enemyCounter.SetCounter(enemiesLeft);
 
-        if(enemiesLeft == 0)
+        if (enemiesLeft == 0)
         {
             EndGame(true);
         }
